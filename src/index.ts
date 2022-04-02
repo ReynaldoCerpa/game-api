@@ -1,8 +1,14 @@
-import { App } from "./app"
+import express from "express";
+import { Server as WebSocketServer } from "socket.io";
+import http from "http";
+import Sockets from "./sockets";
 
-async function main() {
-    const app = new App(process.env.PORT || 3000)
-    await app.listen()
-}
+const app = express();
+const server = http.createServer(app);
 
-main()
+const httpServer = server.listen(8080);
+console.log("Server on http://localhost:8080");
+
+const io = new WebSocketServer(httpServer);
+
+Sockets(io);
