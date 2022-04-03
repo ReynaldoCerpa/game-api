@@ -5,10 +5,9 @@ export default (io: any) => {
       // console.log(socket.handshake.url);
       console.log("nuevo socket connectado:", socket.id);
 
-      socket.on("client:message", () => {
-          console.log("Nuevo mensaje");
-          const resp = "Se ha enviado un nuevo mensaje"
-          io.emit("server:newmessage", resp)
+      socket.on("client:message", (msg) => {
+          console.log(msg);
+          io.emit("server:newmessage", msg)
       })
   
     });
