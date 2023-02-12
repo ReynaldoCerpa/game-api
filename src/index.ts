@@ -6,7 +6,7 @@ import Sockets from "./sockets";
 const app = express();
 const server = http.createServer(app);
 
-const httpServer = server.listen(8080);
+const httpServer = server.listen(8090);
 console.log("Server on http://localhost:8080");
 
 const io = new WebSocketServer(httpServer);

@@ -1,14 +1,15 @@
 import { Socket } from "socket.io";
 
 export default (io: any) => {
-	const socketCounter = 0
+	let socketCounter = 0
 
     io.on("connection", (socket: Socket) => {
 	  socketCounter++
       // console.log(socket.handshake.url);
       console.log("nuevo socket connectado:", socket.id);
 
-	  if (socketCounter == 2){
+	  if (socketCounter == 1){
+		console.log("contador iniciado")
 		io.emit("server:startcounter")
 	  }
 
